@@ -15,7 +15,6 @@ namespace EntityFramework
         {
             state.Id = id ?? throw new ArgumentNullException(nameof(id));
             state.Value = "initial value";
-            state.History.Add(state.Value);
         }
 
         public void ChangeValue(string value)
