@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Elders.Cronus;
+﻿using Elders.Cronus;
 
 namespace EntityFramework
 {
@@ -20,12 +19,7 @@ namespace EntityFramework
 
         public void Save<AR>(AR aggregateRoot) where AR : IAggregateRoot
         {
-            var isTracked = context.ChangeTracker.Entries().Any(x => x.Entity.Equals(aggregateRoot));
-            if (isTracked == false)
-                context.Add(aggregateRoot);
-            else
-                context.Update(aggregateRoot);
-
+            context.Attach(aggregateRoot);
             context.SaveChanges();
         }
     }
