@@ -1,5 +1,4 @@
-﻿using System;
-using Elders.Cronus;
+﻿using Elders.Cronus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
