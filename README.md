@@ -1,3 +1,3 @@
 # Cronus.Samples
 
-Sample configurations and how-to tutorial with Cronus
+Sample configurations and how-to tutorials for Cronus
