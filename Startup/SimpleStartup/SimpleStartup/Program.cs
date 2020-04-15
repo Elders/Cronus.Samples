@@ -16,8 +16,7 @@ namespace SimpleStartup
             services.AddCronus(configuration);
 
             var serviceProvider = services.BuildServiceProvider();
-            var cronusHost = serviceProvider.GetRequiredService<ICronusHost>();
-            cronusHost.Start();
+            CronusBooter.BootstrapCronus(serviceProvider);
         }
     }
 }
