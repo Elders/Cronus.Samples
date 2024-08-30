@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Elders.Cronus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,15 +11,13 @@ namespace SimpleStartup
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var services = new ServiceCollection();
             var logger = ConfigureLogging(services);
 
             try
             {
-                CronusLogger.SetStartupLogger(logger); // inject the start up logger in order to get logs regarding Cronus discoveries and configuration issues
-
                 var configuration = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json")
                     .Build();
@@ -27,8 +26,9 @@ namespace SimpleStartup
                 services.AddCronus(configuration);
 
                 var serviceProvider = services.BuildServiceProvider();
-
-                CronusBooter.BootstrapCronus(serviceProvider); // bootstrap Cronus at the end
+                var cronus = serviceProvider.GetRequiredService<CronusHost>();
+                await cronus.StartAsync();
+                logger.LogInformation("Service is running...");
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace SimpleStartup
         {
             var providers = new LoggerProviderCollection();
 
-            Log.Logger = new LoggerConfiguration()
+            Serilog.Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Debug()
                .WriteTo.Console()
                .WriteTo.Providers(providers)
