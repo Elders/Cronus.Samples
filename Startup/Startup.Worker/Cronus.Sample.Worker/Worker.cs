@@ -13,15 +13,13 @@ namespace Cronus.Sample.Worker
             this.logger = logger;
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             logger.LogInformation("Starting service...");
 
-            cronusHost.Start();
+            await cronusHost.StartAsync();
 
             logger.LogInformation("Service started!");
-
-            return Task.CompletedTask;
         }
     }
 }

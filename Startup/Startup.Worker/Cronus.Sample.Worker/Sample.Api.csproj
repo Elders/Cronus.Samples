@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cronus" Version="8.7.1" />
-    <PackageReference Include="Cronus.Api" Version="8.0.9" />
-    <PackageReference Include="Cronus.AspNetCore" Version="8.1.1" />
-    <PackageReference Include="Cronus.Transport.RabbitMQ" Version="8.1.15" />
-    <PackageReference Include="Cronus.Serialization.NewtonsoftJson" Version="8.0.1" />
+    <PackageReference Include="Cronus" Version="11.2.5" />
+    <PackageReference Include="Cronus.Api" Version="11.1.0" />
+    <PackageReference Include="Cronus.AspNetCore" Version="11.0.0" />
+    <PackageReference Include="Cronus.Transport.RabbitMQ" Version="11.0.10" />
+    <PackageReference Include="Cronus.Serialization.NewtonsoftJson" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
